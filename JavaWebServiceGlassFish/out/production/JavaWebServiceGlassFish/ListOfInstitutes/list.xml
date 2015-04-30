@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<institutes>
+    <institute>
+        <name>MESI1</name>
+        <description>100</description>
+    </institute>
+    <institute>
+        <name>NESI2</name>
+        <description>200</description>
+    </institute>
+</institutes>
