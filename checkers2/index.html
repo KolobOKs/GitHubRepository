@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="jquery-2.1.3.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="checkers.js"></script>
+
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="checkers.css" />
+
+</head>
+
+
+<body>
+
+<div class="overlay" id="overlay" style="display:none;"></div>
+
+<div class="winnerBox" id="winnerBox">
+    <h1 align="center">Поздравляем</h1>
+    <p>
+        Поздравляем! Вы победили!
+    </p>
+</div>
+
+<div class="looserBox" id="looserBox">
+    <h1 align="center">Потрачено</h1>
+    <p>
+        К сожалению, вы проиграли...
+    </p>
+</div>
+
+<div class="waitBox" id="waitBox">
+    <h1 align="center">Ожидание</h1>
+    <p>
+        Ожидание подсоединения достойного противника...
+    </p>
+</div>
+
+<div class="disconnectBox" id="disconnectBox">
+    <h1 align="center">Соперник отключился</h1>
+    <p>
+        Ваш соперник отключился. Поиск новой игры...
+    </p>
+</div>
+
+<div class="welcomeBox" id="welcomeBox">
+    <h1 align="center">Шашки, шашечки шашучки</h1>
+    <p>
+        Введите своё имя
+    </p>
+
+    <input type="text" name="name" value="" />
+    <button onclick="NameEntered()">Отправить</button>
+</div>
+
+</body>
+
+<div class="gameBox" id="gameBox">
+    <h1 align="center">Игра</h1>
+    <p id="playerLabel">
+        Вы -
+    </p>
+    <p id="opponentLabel">Ваш соперник - </p>
+</div>
+
+<script>ShowWelcomeBox();</script>
+</html>
