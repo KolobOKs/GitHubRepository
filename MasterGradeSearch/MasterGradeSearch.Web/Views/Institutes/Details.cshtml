@@ -1,0 +1,89 @@
+﻿@using MasterGradeSearch.Core.Commons
+@model MasterGradeSearch.Core.Commons.Institute
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="page-header">
+    <h1>@Html.DisplayFor(model => model.ShortName)<br /><small>@Html.DisplayFor(model => model.FullName)</small></h1>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Информация об учебном заведении</h3>
+    </div>
+    <div class="panel-body">
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.City.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.City.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.District.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.District.Name)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="table table-striped">
+    <div class="panel-heading">
+        <h3 class="panel-title">Направления подготовки университета</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    <p>Направление подготовки</p>
+                </th>
+                <th>
+                    <p>Тип</p>
+                </th>
+                <th>
+                    <p>Бюджет</p>
+                </th>
+                <th>
+                    <p>Общежитие</p>
+                </th>
+            </tr>
+
+            @foreach (Course course in Model.Courses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => course.Discipline.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => course.LearningType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => course.Budget)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => course.Hostel)
+                    </td>
+                </tr>
+            }
+
+        </table>
+       
+           @Html.ActionLink("Добавить направление подготовки", "CreateCourse", "Institutes", new {@instututeId=Model.Id},new {@role="button", @class="btn btn-success"})
+        
+    </div>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

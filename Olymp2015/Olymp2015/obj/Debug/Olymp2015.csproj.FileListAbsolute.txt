@@ -1,0 +1,6 @@
+C:\Users\Kirill\Documents\Visual Studio 2013\Projects\Olymp2015\Olymp2015\bin\Debug\Olymp2015.exe.config
+C:\Users\Kirill\Documents\Visual Studio 2013\Projects\Olymp2015\Olymp2015\bin\Debug\Olymp2015.exe
+C:\Users\Kirill\Documents\Visual Studio 2013\Projects\Olymp2015\Olymp2015\bin\Debug\Olymp2015.pdb
+C:\Users\Kirill\Documents\Visual Studio 2013\Projects\Olymp2015\Olymp2015\obj\Debug\Olymp2015.csprojResolveAssemblyReference.cache
+C:\Users\Kirill\Documents\Visual Studio 2013\Projects\Olymp2015\Olymp2015\obj\Debug\Olymp2015.exe
+C:\Users\Kirill\Documents\Visual Studio 2013\Projects\Olymp2015\Olymp2015\obj\Debug\Olymp2015.pdb

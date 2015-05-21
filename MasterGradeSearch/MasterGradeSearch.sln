@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterGradeSearch.Web", "MasterGradeSearch.Web\MasterGradeSearch.Web.csproj", "{9B21738D-70CF-4277-A32E-8B343A9DD046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterGradeSearch.Core", "MasterGradeSearch.Core\MasterGradeSearch.Core.csproj", "{8C468F2F-20EC-43E7-8CC1-D5BB2DACBFE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B21738D-70CF-4277-A32E-8B343A9DD046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B21738D-70CF-4277-A32E-8B343A9DD046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B21738D-70CF-4277-A32E-8B343A9DD046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B21738D-70CF-4277-A32E-8B343A9DD046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C468F2F-20EC-43E7-8CC1-D5BB2DACBFE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C468F2F-20EC-43E7-8CC1-D5BB2DACBFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C468F2F-20EC-43E7-8CC1-D5BB2DACBFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C468F2F-20EC-43E7-8CC1-D5BB2DACBFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
