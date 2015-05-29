@@ -136,3 +136,4 @@ C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\M
 C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.Migrations.test22.resources
 C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.Migrations.test33.resources
 C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.Migrations.test3.resources
+C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.Migrations.test31.resources

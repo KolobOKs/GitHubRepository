@@ -1,0 +1,80 @@
+﻿@model MasterGradeSearch.Web.Models.SearchViewModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="btn-group">
+    <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
+        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
+        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
+        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
+    </ul>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>1</p>
+        </th>
+        <th>
+            <p>2</p>
+        </th>
+        <th>
+            <p>3</p>
+        </th>
+        <th>
+            <p>4</p>
+        </th>
+        <th>
+            <p>1</p>
+        </th>
+        <th>
+            <p>2</p>
+        </th>
+        <th>
+            <p>3</p>
+        </th>
+        <th>
+            <p>4</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.FindedCourses)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Institute.ShortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discipline.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LearningType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extrabudgetary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreparatoryCourses)
+            </td>
+        </tr>
+    }
+
+</table>
