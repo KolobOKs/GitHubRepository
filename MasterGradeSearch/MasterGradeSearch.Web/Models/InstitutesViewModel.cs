@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using MasterGradeSearch.Core.Commons;
 
 namespace MasterGradeSearch.Web.Models

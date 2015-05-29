@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace MasterGradeSearch.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var courses = await db.Courses.Include(i => i.Discipline).Where(i => i.InstituteId == id).ToArrayAsync();
+            var courses = await db.Courses.Include(i => i.Discipline).Where(i => i.InstituteId == id).Include(i=>i.Exams).ToArrayAsync();
             Institute institute = await db.Institutes.Include(i => i.City).Include(i => i.District).SingleOrDefaultAsync(i=>i.Id==id);
             if (institute == null)
             {
@@ -113,20 +114,40 @@ namespace MasterGradeSearch.Web.Controllers
         {
             ViewBag.DisciplineId = new SelectList(db.Disciplines, "Id", "Name");
             var result=  await db.Institutes.FirstAsync(i => i.Id == instututeId);
+            var examsList = await db.Exams.ToListAsync();
+            List<SelectListItem> selectExamsList=new List<SelectListItem>();
+            foreach (var exam in examsList)
+            {
+                var item = new SelectListItem();
+                item.Value = exam.ExamId.ToString();
+                item.Text = exam.Name;
+                selectExamsList.Add(item);
+            }
             ViewBag.InstituteName = result.ShortName;
             ViewBag.InstituteId = instututeId;
-            var course = new Course();
+            var course = new CourseViewModel();
             course.InstituteId = instututeId;
+            ViewBag.ExamsList = selectExamsList;
             return View(course);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateCourse([Bind(Include = "Id, Institute, DisciplineId,LearningType,PreparatoryCourses,Hostel,Budget,Extrabudgetary,Cost")] Course course)
+        public async Task<ActionResult> CreateCourse([Bind(Include = "Id, Institute, DisciplineId,LearningType,PreparatoryCourses,Hostel,Budget,Extrabudgetary,Cost,ExamsIds")] CourseViewModel course)
         {
             course.InstituteId = Int32.Parse(HttpContext.Request.QueryString[0]);
             if (ModelState.IsValid)
             {
+                foreach (var id in course.ExamsIds)
+                {
+                    var ex = db.Exams.FirstOrDefault(d => d.ExamId == id.Value);
+                    if (course.Exams == null)
+                    {
+                        course.Exams=new Collection<Exam>();
+                    }
+                    course.Exams.Add(ex);
+                }
+            
                 db.Courses.Add(course);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

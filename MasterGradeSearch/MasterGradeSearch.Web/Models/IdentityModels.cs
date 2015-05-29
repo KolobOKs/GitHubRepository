@@ -27,6 +27,34 @@ namespace MasterGradeSearch.Web.Models
         {
         }
 
+        #region Overrides of IdentityDbContext<ApplicationUser,IdentityRole,string,IdentityUserLogin,IdentityUserRole,IdentityUserClaim>
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Course>()
+           .HasMany(x => x.Exams)
+           .WithMany(x => x.Courses)
+           .Map(c =>
+           {
+               c.MapLeftKey("CourseId");
+               c.MapRightKey("ExamId");
+               c.ToTable("CoursesToExamMapping");
+           });
+
+            modelBuilder.Entity<Exam>()
+               .HasMany(x => x.Courses)
+               .WithMany(x => x.Exams)
+               .Map(c =>
+               {
+                   c.MapLeftKey("ExamId");
+                   c.MapRightKey("CourseId");
+                   c.ToTable("CoursesToExamMapping");
+               });
+        }
+
+        #endregion
+
         public DbSet<City> Cities { get; set; }
 
         public DbSet<District> Districts { get; set; }

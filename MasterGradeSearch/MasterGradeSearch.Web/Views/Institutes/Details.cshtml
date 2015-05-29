@@ -1,4 +1,5 @@
-﻿@using MasterGradeSearch.Core.Commons
+﻿@using System.Drawing
+@using MasterGradeSearch.Core.Commons
 @model MasterGradeSearch.Core.Commons.Institute
 
 @{
@@ -49,10 +50,19 @@
                     <p>Тип</p>
                 </th>
                 <th>
+                    <p>Общежитие</p>
+                </th>
+                <th>
                     <p>Бюджет</p>
                 </th>
                 <th>
-                    <p>Общежитие</p>
+                    <p>Внебюджет</p>
+                </th>
+                <th>
+                    <p>Стоимость</p>
+                </th>
+                <th>
+                    <p>Вступительные испытания</p>
                 </th>
             </tr>
 
@@ -66,10 +76,20 @@
                         @Html.DisplayFor(modelItem => course.LearningType)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => course.Hostel)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => course.Budget)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => course.Hostel)
+                        @Html.DisplayFor(modelItem => course.Extrabudgetary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => course.Cost)
+                    </td>
+                    <td>
+                        @{ var examsStr = String.Join(", ", course.Exams.Select(x => x.Name));}
+                        @Html.DisplayFor(modelItem => examsStr)
                     </td>
                 </tr>
             }

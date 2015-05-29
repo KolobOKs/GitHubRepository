@@ -2,3 +2,7 @@ C:\Users\Kirill\Documents\Visual Studio 2013\Projects\MasterGradeSearch\MasterGr
 C:\Users\Kirill\Documents\Visual Studio 2013\Projects\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\MasterGradeSearch.Core.pdb
 C:\Users\Kirill\Documents\Visual Studio 2013\Projects\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.dll
 C:\Users\Kirill\Documents\Visual Studio 2013\Projects\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.pdb
+C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\MasterGradeSearch.Core.dll
+C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\MasterGradeSearch.Core.pdb
+C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.dll
+C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.pdb

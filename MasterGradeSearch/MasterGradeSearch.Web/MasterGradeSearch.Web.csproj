@@ -161,6 +161,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\DistrictsController.cs" />
+    <Compile Include="Controllers\ExamsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstitutesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -203,8 +204,26 @@
     <Compile Include="Migrations\201505192128340_Bugfix6.Designer.cs">
       <DependentUpon>201505192128340_Bugfix6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505291505376_test.cs" />
+    <Compile Include="Migrations\201505291505376_test.Designer.cs">
+      <DependentUpon>201505291505376_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505291511087_test22.cs" />
+    <Compile Include="Migrations\201505291511087_test22.Designer.cs">
+      <DependentUpon>201505291511087_test22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505291550079_test33.cs" />
+    <Compile Include="Migrations\201505291550079_test33.Designer.cs">
+      <DependentUpon>201505291550079_test33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505291614061_test3.cs" />
+    <Compile Include="Migrations\201505291614061_test3.Designer.cs">
+      <DependentUpon>201505291614061_test3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CourseViewModel.cs" />
+    <Compile Include="Models\ExamViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InstitutesViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -288,6 +307,8 @@
     <Content Include="Views\Institutes\Edit.cshtml" />
     <Content Include="Views\Institutes\Index.cshtml" />
     <Content Include="Views\Institutes\CreateCourse.cshtml" />
+    <Content Include="Views\Exams\Index.cshtml" />
+    <Content Include="Views\Exams\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +347,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505192128340_Bugfix6.resx">
       <DependentUpon>201505192128340_Bugfix6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505291505376_test.resx">
+      <DependentUpon>201505291505376_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505291511087_test22.resx">
+      <DependentUpon>201505291511087_test22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505291550079_test33.resx">
+      <DependentUpon>201505291550079_test33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505291614061_test3.resx">
+      <DependentUpon>201505291614061_test3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

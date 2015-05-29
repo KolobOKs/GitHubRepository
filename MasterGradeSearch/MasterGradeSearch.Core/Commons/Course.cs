@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,7 +8,8 @@ namespace MasterGradeSearch.Core.Commons
 
     public class Course
     {
-        public int Id { get; set; }
+        [Key]
+        public int CourseId { get; set; }
 
         [Required]
         public int InstituteId { get; set; }
@@ -40,7 +42,6 @@ namespace MasterGradeSearch.Core.Commons
         [Required]
         public decimal Cost { get; set; }
 
-      
         public virtual ICollection<Exam> Exams { get; set; }
     }
 }
