@@ -114,6 +114,7 @@ namespace MasterGradeSearch.Web.Controllers
             ViewBag.DisciplineId = new SelectList(db.Disciplines, "Id", "Name");
             var result=  await db.Institutes.FirstAsync(i => i.Id == instututeId);
             ViewBag.InstituteName = result.ShortName;
+            ViewBag.InstituteId = instututeId;
             var course = new Course();
             course.InstituteId = instututeId;
             return View(course);
@@ -121,8 +122,9 @@ namespace MasterGradeSearch.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateCourse([Bind(Include = "Id, InstituteId, DisciplineId,LearningType,PreparatoryCourses,Hostel,Budget,Extrabudgetary,Cost")] Course course)
+        public async Task<ActionResult> CreateCourse([Bind(Include = "Id, Institute, DisciplineId,LearningType,PreparatoryCourses,Hostel,Budget,Extrabudgetary,Cost")] Course course)
         {
+            course.InstituteId = Int32.Parse(HttpContext.Request.QueryString[0]);
             if (ModelState.IsValid)
             {
                 db.Courses.Add(course);

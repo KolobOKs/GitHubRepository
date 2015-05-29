@@ -19,6 +19,7 @@
             @Html.LabelFor(model => model.InstituteId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input class="form-control" id="disabledInput" type="text" placeholder="@ViewBag.InstituteName" disabled>
+                @{ Model.InstituteId = ViewBag.InstituteId;}
             </div>
         </div>
 
