@@ -67,6 +67,10 @@ namespace MasterGradeSearch.Web.Models
 
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<Criterion> Сriterions { get; set; }
+
+        public DbSet<CriterionRatio> CriterionRatios { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

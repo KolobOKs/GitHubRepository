@@ -19,6 +19,8 @@ namespace MasterGradeSearch.Web.Controllers
             var courses= await db.Courses.Include(c=>c.Institute).Include(c=>c.Discipline).Include(c=>c.Exams).ToListAsync();
             var model = new SearchViewModel();
             model.FindedCourses = courses;
+
+            var test = new Core.Calculation(await db.CriterionRatios.Include(c=>c.CriterionDestination).Include(c=>c.CriterionSource).ToListAsync());
             return View(model);
         }
     }

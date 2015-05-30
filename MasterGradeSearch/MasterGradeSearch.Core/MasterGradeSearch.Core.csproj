@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculation.cs" />
     <Compile Include="Commons\City.cs" />
     <Compile Include="Commons\Course.cs" />
+    <Compile Include="Commons\CourseFilterProreties.cs" />
+    <Compile Include="Commons\CriterionRatio.cs" />
     <Compile Include="Commons\Discipline.cs" />
     <Compile Include="Commons\District.cs" />
     <Compile Include="Commons\Exam.cs" />
     <Compile Include="Commons\Institute.cs" />
     <Compile Include="Commons\LearningType.cs" />
+    <Compile Include="Commons\Сriterion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

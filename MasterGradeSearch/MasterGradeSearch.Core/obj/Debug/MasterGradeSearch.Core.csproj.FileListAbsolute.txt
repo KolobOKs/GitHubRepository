@@ -6,3 +6,8 @@ C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\
 C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\MasterGradeSearch.Core.pdb
 C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.dll
 C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.pdb
+C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.csprojResolveAssemblyReference.cache
+C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.dll
+C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\obj\Debug\MasterGradeSearch.Core.pdb
+C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\MasterGradeSearch.Core.dll
+C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Core\bin\Debug\MasterGradeSearch.Core.pdb
