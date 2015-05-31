@@ -6,6 +6,8 @@ namespace MasterGradeSearch.Web.Models
 {
     public class SearchViewModel
     {
+        public List<City> Cities { get; set; }
+        public List<District> Districts { get; set; } 
         public List<Course> FindedCourses { get; set; }
     }
 

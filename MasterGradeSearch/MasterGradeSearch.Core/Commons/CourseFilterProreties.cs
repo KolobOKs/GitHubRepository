@@ -4,6 +4,11 @@ namespace MasterGradeSearch.Core.Commons
 {
     public class CourseFilterProreties
     {
+        public CourseFilterProreties()
+        {
+            LearningTypes=new List<LearningType>();
+        }
+
         public List<Discipline> Disciplines { get; set; }
         public List<Exam> Exams { get; set; }
         public bool PreparatoryCourses { get; set; }

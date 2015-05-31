@@ -12,34 +12,38 @@ namespace MasterGradeSearch.Core
             Criteries = ratios.Select(r => r.CriterionSource).Distinct().ToList();
             double rootDegree = Criteries.Count;
             rootDegree = 1/(rootDegree - 1);
-            foreach (var criteria in Criteries)
+            foreach (Criterion criteria in Criteries)
             {
-                var ratiosForCurrentCriteria = ratios.Where(r => r.CriterionSource == criteria);
-                var multiplicationCoef = ratiosForCurrentCriteria.Aggregate(1.0, (current, ratio) => current*ratio.Ratio);
-                
-                criteria.CriterionCoef=Math.Pow(multiplicationCoef, rootDegree);
+                IEnumerable<CriterionRatio> ratiosForCurrentCriteria = ratios.Where(r => r.CriterionSource == criteria);
+                double multiplicationCoef = ratiosForCurrentCriteria.Aggregate(1.0,
+                    (current, ratio) => current*ratio.Ratio);
+
+                criteria.CriterionCoef = Math.Pow(multiplicationCoef, rootDegree);
             }
-            var sumOfCriteries = Criteries.Sum(c => c.CriterionCoef);
-            foreach (var criterion in Criteries)
+            double sumOfCriteries = Criteries.Sum(c => c.CriterionCoef);
+            foreach (Criterion criterion in Criteries)
             {
-                criterion.CriterionCoef = criterion.CriterionCoef / sumOfCriteries;
+                criterion.CriterionCoef = criterion.CriterionCoef/sumOfCriteries;
             }
         }
 
-        public double GetCoefOfCourse(CourseFilterProreties filter,Course course, List<Course> allCourses)
+        public List<Criterion> Criteries { get; set; }
+
+        public double GetCoefOfCourse(CourseFilterProreties filter, Course course, List<Course> allCourses)
         {
-            double totalCoefficient=0;
+            double totalCoefficient = 0;
             //Критерий "Наличие специальности
             if (filter.Disciplines.Any(d => d == course.Discipline))
             {
                 if (filter.Disciplines.Count == 1)
                 {
-                    totalCoefficient+=Criteries.First(c => c.Name == "DisciplineExists").CriterionCoef;
+                    totalCoefficient += Criteries.First(c => c.Name == "DisciplineExists").CriterionCoef;
                 }
                 else
                 {
-                    var instituteCourses = allCourses.Where(c => c.Institute == course.Institute).ToList();
-                    var findedDisciplines = filter.Disciplines.Count(discipline => instituteCourses.Any(i => i.Discipline == discipline));
+                    List<Course> instituteCourses = allCourses.Where(c => c.Institute == course.Institute).ToList();
+                    int findedDisciplines =
+                        filter.Disciplines.Count(discipline => instituteCourses.Any(i => i.Discipline == discipline));
                     double disciplinesCount = filter.Disciplines.Count;
                     totalCoefficient += (Criteries.First(c => c.Name == "DisciplineExists").CriterionCoef*
                                          (findedDisciplines/disciplinesCount));
@@ -48,9 +52,9 @@ namespace MasterGradeSearch.Core
             //Конец критерия "Наличие специальности
 
             //Критерий "Вступительные испытания 
-            var findedExams = filter.Exams.Count(exam => course.Exams.Any(i => i == exam));
+            int findedExams = filter.Exams.Count(exam => course.Exams.Any(i => i == exam));
             double examsCount = filter.Exams.Count;
-            totalCoefficient += Criteries.First(c => c.Name == "ExamsExists").CriterionCoef * (findedExams / examsCount);
+            totalCoefficient += Criteries.First(c => c.Name == "ExamsExists").CriterionCoef*(findedExams/examsCount);
             //Конец критерия "Вступительные испытания 
 
             //Критерий "•	Наличие подготовительных курсов 
@@ -68,22 +72,71 @@ namespace MasterGradeSearch.Core
             //Конец критерия "•	Наличие общежития
 
             //Критерий "•	Бюджет/внебюджет 
-
+            if (filter.Budget && !filter.Extrabudget && course.Budget)
+            {
+                totalCoefficient += Criteries.First(c => c.Name == "BudgetOrExtrabudget").CriterionCoef;
+            }
+            else if (!filter.Budget && filter.Extrabudget && course.Extrabudgetary)
+            {
+                if (course.Cost <= filter.Cost)
+                {
+                    totalCoefficient += Criteries.First(c => c.Name == "BudgetOrExtrabudget").CriterionCoef;
+                }
+                else if (course.Cost <= filter.Cost - 15000)
+                {
+                    totalCoefficient += Criteries.First(c => c.Name == "BudgetOrExtrabudget").CriterionCoef*0.5;
+                }
+            }
+            else if (filter.Budget && filter.Extrabudget)
+            {
+                if (course.Budget)
+                {
+                    totalCoefficient += Criteries.First(c => c.Name == "BudgetOrExtrabudget").CriterionCoef;
+                }
+                else if (course.Extrabudgetary && course.Cost <= filter.Cost)
+                {
+                    totalCoefficient += Criteries.First(c => c.Name == "BudgetOrExtrabudget").CriterionCoef*0.5;
+                }
+            }
             //Конец критерия "•	Бюджет/внебюджет 
 
             //Критерий "•	Расположение
-            if (filter.Districts.Count > 0 && filter.Districts.Any(d => d == course.Institute.District))
+            if (course.Institute.District != null)
             {
-                totalCoefficient += Criteries.First(c => c.Name == "CityLocation").CriterionCoef;
+                if (filter.Districts.Count > 0 && filter.Districts.Any(d => d == course.Institute.District))
+                {
+                    totalCoefficient += Criteries.First(c => c.Name == "CityLocation").CriterionCoef;
+                }
             }
             //Конец критерия "•	Расположение
 
             //Критерий "•	Очное/ заочное 
+            if (filter.LearningTypes.Any(t => t == LearningType.FullTime) &&
+                filter.LearningTypes.All(t => t != LearningType.DistanceLearning) &&
+                course.LearningType == LearningType.FullTime)
+            {
+                totalCoefficient += Criteries.First(c => c.Name == "LearningType").CriterionCoef;
+            }
+            else if (filter.LearningTypes.Any(t => t == LearningType.DistanceLearning) &&
+                     filter.LearningTypes.All(t => t != LearningType.FullTime) &&
+                     course.LearningType == LearningType.DistanceLearning)
+            {
+                totalCoefficient += Criteries.First(c => c.Name == "LearningType").CriterionCoef;
+            }
+            else if (filter.LearningTypes.Any(t => t == LearningType.DistanceLearning) &&
+                     filter.LearningTypes.All(t => t != LearningType.FullTime) &&
+                     course.LearningType == LearningType.FullTime)
+            {
+                totalCoefficient += Criteries.First(c => c.Name == "LearningType").CriterionCoef*0.3;
+            }
+            else if (filter.LearningTypes.Any(t => t == LearningType.FullTime) &&
+                     filter.LearningTypes.Any(t => t == LearningType.DistanceLearning))
+            {
+                totalCoefficient += Criteries.First(c => c.Name == "LearningType").CriterionCoef;
+            }
             //Конец критерия "•	Очное/ заочное 
 
             return totalCoefficient;
         }
-
-        public List<Criterion> Criteries { get; set; }
     }
 }

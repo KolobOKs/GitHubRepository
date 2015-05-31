@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using MasterGradeSearch.Core.Commons;
 using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
@@ -16,12 +17,23 @@ namespace MasterGradeSearch.Web.Controllers
         // GET: Search
         public async Task<ActionResult> Index()
         {
-            var courses= await db.Courses.Include(c=>c.Institute).Include(c=>c.Discipline).Include(c=>c.Exams).ToListAsync();
-            var model = new SearchViewModel();
-            model.FindedCourses = courses;
-
-            var test = new Core.Calculation(await db.CriterionRatios.Include(c=>c.CriterionDestination).Include(c=>c.CriterionSource).ToListAsync());
+            var model = new SearchViewModel {Cities = await db.Cities.ToListAsync(), FindedCourses = new List<Course>()};
             return View(model);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult LoadPhysiansByDepartment(string deptId)
+        {
+            //Your Code For Getting Physicans Goes Here
+            var districts = db.Districts.ToList();
+
+
+            var phyData = districts.Select(m => new SelectListItem()
+            {
+                Text = m.Name,
+                Value = m.Id.ToString(),
+            });
+            return Json(phyData, JsonRequestBehavior.AllowGet);
         }
     }
 }

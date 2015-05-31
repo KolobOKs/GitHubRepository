@@ -1,19 +1,52 @@
-﻿@model MasterGradeSearch.Web.Models.SearchViewModel
+﻿@using System.Linq
+@model MasterGradeSearch.Web.Models.SearchViewModel
 
 
 @{
     ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#departmentList").change(function () {
+            var dID= $(this).val();
+            $.getJSON("../search/LoadPhysiansByDepartment", { deptId: dID },
+                function (data) {
+                    var select = $("#physiciansList");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "Select a Physian"
+                    }));
+                    $.each(data, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+        });
+    });
+</script>
+
+@Html.DropDownListFor(model => model.Cities,new SelectList(Model.Cities),
+
+            "Select a City", new { id = "departmentList" })
+
+<p>
+    @Html.DropDownListFor(model => model.Districts, new SelectList(Enumerable.Empty<SelectListItem>(), "phyID", "phyName"),
+            "Select a District", new { id = "physiciansList" })
+</p>
+
 <h2>Index</h2>
 
 <div class="btn-group">
-    <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
+    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
     <ul class="dropdown-menu">
-        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
-        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
-        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
-        <li><input type="checkbox" id="ID"><label for="ID" name="NAME" value="VALUE">Label</label></li>
+        <li><input type="checkbox" id="ID1"><label for="ID1">Label1</label></li>
+        <li><input type="checkbox" id="ID2"><label for="ID2">Label2</label></li>
+        <li><input type="checkbox" id="ID3"><label for="ID3">Label3</label></li>
+        <li><input type="checkbox" id="ID4"><label for="ID4">Label4</label></li>
     </ul>
 </div>
 
@@ -46,35 +79,37 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model.FindedCourses)
+    @if (Model.FindedCourses.Count > 0)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Institute.ShortName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discipline.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LearningType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hostel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Budget)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Extrabudgetary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PreparatoryCourses)
-            </td>
-        </tr>
+       foreach (var item in Model.FindedCourses)
+         {
+             <tr>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Institute.ShortName)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Discipline.Name)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.LearningType)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Hostel)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Budget)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Extrabudgetary)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Cost)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.PreparatoryCourses)
+                 </td>
+             </tr>
+         }
     }
 
 </table>
