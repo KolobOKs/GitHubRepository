@@ -210,3 +210,4 @@ C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\Master
 C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.dll
 C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.pdb
 C:\Git\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.Migrations.CriteriesAdded.resources
+C:\Projects\GitHubRepository\MasterGradeSearch\MasterGradeSearch.Web\obj\Debug\MasterGradeSearch.Web.Migrations.CriteriesAdded.resources
