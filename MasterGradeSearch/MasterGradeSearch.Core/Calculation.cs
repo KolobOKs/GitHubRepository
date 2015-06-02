@@ -33,7 +33,7 @@ namespace MasterGradeSearch.Core
         {
             double totalCoefficient = 0;
             //Критерий "Наличие специальности
-            if (filter.Disciplines.Any(d => d == course.Discipline))
+            if (filter.Disciplines.Any(d => d.Id == course.Discipline.Id))
             {
                 if (filter.Disciplines.Count == 1)
                 {
@@ -41,9 +41,9 @@ namespace MasterGradeSearch.Core
                 }
                 else
                 {
-                    List<Course> instituteCourses = allCourses.Where(c => c.Institute == course.Institute).ToList();
+                    List<Course> instituteCourses = allCourses.Where(c => c.Institute.Id == course.Institute.Id).ToList();
                     int findedDisciplines =
-                        filter.Disciplines.Count(discipline => instituteCourses.Any(i => i.Discipline == discipline));
+                        filter.Disciplines.Count(discipline => instituteCourses.Any(i => i.Discipline.Id == discipline.Id));
                     double disciplinesCount = filter.Disciplines.Count;
                     totalCoefficient += (Criteries.First(c => c.Name == "DisciplineExists").CriterionCoef*
                                          (findedDisciplines/disciplinesCount));
@@ -52,7 +52,7 @@ namespace MasterGradeSearch.Core
             //Конец критерия "Наличие специальности
 
             //Критерий "Вступительные испытания 
-            int findedExams = filter.Exams.Count(exam => course.Exams.Any(i => i == exam));
+            int findedExams = filter.Exams.Count(exam => course.Exams.Any(i => i.ExamId == exam.ExamId));
             double examsCount = filter.Exams.Count;
             totalCoefficient += Criteries.First(c => c.Name == "ExamsExists").CriterionCoef*(findedExams/examsCount);
             //Конец критерия "Вступительные испытания 
@@ -103,7 +103,7 @@ namespace MasterGradeSearch.Core
             //Критерий "•	Расположение
             if (course.Institute.District != null)
             {
-                if (filter.Districts.Count > 0 && filter.Districts.Any(d => d == course.Institute.District))
+                if (filter.Districts.Count > 0 && filter.Districts.Any(d => d.Id == course.Institute.District.Id))
                 {
                     totalCoefficient += Criteries.First(c => c.Name == "CityLocation").CriterionCoef;
                 }

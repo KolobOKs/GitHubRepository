@@ -1,4 +1,5 @@
 ﻿@using MasterGradeSearch.Core.Commons
+@using MasterGradeSearch.Web.Models
 @model MasterGradeSearch.Web.Models.SearchViewModel
 
 
@@ -7,120 +8,243 @@
 }
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#departmentList").click(function() {
-            var dID = $(this).val();
-            $.getJSON("../search/LoadDistinctsByCity", { cityId: dID },
-                function (data) {
-                    var select = $("#physiciansList");
-                    if (data.length > 0) {
-                        select.empty();
-                        select.append($('<option/>', {
-                            value: 0,
-                            text: "Select a Physian"
-                        }));
-                        $.each(data, function(index, itemData) {
-                            select.append($('<option/>', {
-                                value: itemData.Value,
-                                text: itemData.Text
-                            }));
-                        });
-                    } else {
-                        select.empty();
-                    }
 
-                });
-        });
-    });
+    function handleDisciplineClick(cb) {
+        var text = '<input type="hidden" value=' + cb.title + ' id=DiscIDS  name=DiscIDS >';
+        if (cb.checked) {
+            $("#" + cb.id).after(text);
+        } else {
+            $("#" + cb.id).next('#DiscIDS').remove();
+        }
+    }
+
+    function handleDistrictClick(cb) {
+        var text = '<input type="hidden" value=' + cb.title + ' id=DstrIDS  name=DstrIDS >';
+        if (cb.checked) {
+            $("#" + cb.id).after(text);
+        } else {
+            $("#" + cb.id).next('#DstrIDS').remove();
+        }
+    }
+
+    function handleCityClick(cb) {
+        var text = '<input type="hidden" value=' + cb.title + ' id=CityIDS  name=CityIDS >';
+        if (cb.checked) {
+            $("#" + cb.id).after(text);
+        } else {
+            $("#" + cb.id).next('#CityIDS').remove();
+        }
+    }
+
+    function handleExamClick(cb) {
+        var text = '<input type="hidden" value=' + cb.title + ' id=ExamIDS  name=ExamIDS >';
+        if (cb.checked) {
+            $("#" + cb.id).after(text);
+        } else {
+            $("#" + cb.id).next('#ExamIDS').remove();
+        }
+    }
 </script>
 
+<div class="jumbotron">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-<div class="btn-group">
-    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
-    <ul class="dropdown-menu" id="departmentList">
-        @foreach (SelectListItem item in Model.CitiesSelectList)
-        {
-            <li><input type="checkbox" id="@item.Value"><label for="@item.Value">@item.Text</label></li>
-        }
-    </ul>
+        <table class="table table-borderless table-condensed table-hover">
+            <tr>
+                <td>
+                    <div class="btn-group" id="1">
+                        <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Выберите город <span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="cityList">
+                            @for (int i = 0; i < Model.CitiesSelectList.Count; i++)
+                            {
+                                string idstr = "city" + Model.CitiesSelectList[i].Value;
+
+                                <li><input type="checkbox" onclick=' handleCityClick(this); ' id="@idstr" title="@Model.CitiesSelectList[i].Value"><label for="@idstr">@Model.CitiesSelectList[i].Text</label></li>
+                            }
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" id="2">
+                        <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Выберите район <span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="districtList">
+                            @for (int i = 0; i < Model.DistinctsSelectList.Count; i++)
+                            {
+                                string idstr = "dstr" + Model.DistinctsSelectList[i].Value;
+
+                                <li><input type="checkbox" onclick=' handleDistrictClick(this); ' id="@idstr" title="@Model.DistinctsSelectList[i].Value"><label for="@idstr">@Model.DistinctsSelectList[i].Text</label></li>
+                            }
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="btn-group" id="3">
+                        <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Выберите дисциплину <span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="DisciplineList">
+                            @for (int i = 0; i < Model.DisciplinesSelectList.Count; i++)
+                            {
+                                string idstr = "disc" + Model.DisciplinesSelectList[i].Value;
+
+                                <li><input type="checkbox" onclick=' handleDisciplineClick(this); ' id="@idstr" title="@Model.DisciplinesSelectList[i].Value"><label for="@idstr">@Model.DisciplinesSelectList[i].Text</label></li>
+                            }
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" id="3">
+                        <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Выберите вступительные испытания <span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="DisciplineList">
+                            @for (int i = 0; i < Model.ExamsSelectList.Count; i++)
+                            {
+                                string idstr = "exam" + Model.ExamsSelectList[i].Value;
+
+                                <li><input type="checkbox" onclick=' handleExamClick(this); ' id="@idstr" title="@Model.ExamsSelectList[i].Value"><label for="@idstr">@Model.ExamsSelectList[i].Text</label></li>
+                            }
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="hostelCHECK"> Общежитие
+                        </label>
+                    </div></td>
+                <td><div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="preparationCHECK"> Подготовительные курсы
+                        </label>
+                    </div></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="budgetCHECK"> Бюджет
+                        </label>
+                    </div></td>
+                <td><div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="extraBudgetCHECK"> Внебюджет
+                        </label>
+                    </div></td>
+                <td>
+                    <label>
+                        <input type="text" class="form-control" placeholder="Стоимость" name="costTEXT" />
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="fullCHECK"> Очное
+                    </label>
+                </div></td>
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="distanceCHECK"> Заочное
+                        </label>
+                    </div></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td class="text-left"><div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input  type="submit" value="Начать поиск" class="btn btn-warning left" />
+    </div>
+</div></td>
+                <td>
+
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    }
 </div>
 
 
 
-<p>
-    @Html.DropDownListFor(model => model.Districts, new SelectList(Enumerable.Empty<SelectListItem>(), "phyID", "phyName"),
-        "Select a District", new {id = "physiciansList"})
-</p>
 
 <h2>Index</h2>
-
-<div class="btn-group">
-    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" data-placeholder="Please select">Checked option <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-        <li><input type="checkbox" id="ID1"><label for="ID1">Label1</label></li>
-        <li><input type="checkbox" id="ID2"><label for="ID2">Label2</label></li>
-        <li><input type="checkbox" id="ID3"><label for="ID3">Label3</label></li>
-        <li><input type="checkbox" id="ID4"><label for="ID4">Label4</label></li>
-    </ul>
-</div>
 
 
 <table class="table">
     <tr>
         <th>
-            <p>1</p>
+            <p>Коэффициент</p>
         </th>
         <th>
-            <p>2</p>
+            <p>Университет</p>
         </th>
         <th>
-            <p>3</p>
+            <p>Направление подготовки</p>
         </th>
         <th>
-            <p>4</p>
+            <p>Тип обучения</p>
         </th>
         <th>
-            <p>1</p>
+            <p>Общежитие</p>
         </th>
         <th>
-            <p>2</p>
+            <p>Бюджет</p>
         </th>
         <th>
-            <p>3</p>
+            <p>Внебюджет</p>
         </th>
         <th>
-            <p>4</p>
+            <p>Стоимость обучения</p>
+        </th>
+        <th>
+            <p>Подготовительные курсы</p>
         </th>
         <th></th>
     </tr>
     @if (Model.FindedCourses.Count > 0)
     {
-        foreach (Course item in Model.FindedCourses)
+        foreach (SearchCourseViewModel item in Model.FindedCourses)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Institute.ShortName)
+                    @Html.DisplayFor(modelItem => item.SearchCoef)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Discipline.Name)
+                    @Html.DisplayFor(modelItem => item.Course.Institute.ShortName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LearningType)
+                    @Html.DisplayFor(modelItem => item.Course.Discipline.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Hostel)
+                    @if (item.Course.LearningType == LearningType.FullTime)
+                    {
+                        <p>Очное</p>
+                    }
+                    else
+                    {
+                        <p>Заочное</p>
+                    }
+                  
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Budget)
+                    @Html.DisplayFor(modelItem => item.Course.Hostel)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Extrabudgetary)
+                    @Html.DisplayFor(modelItem => item.Course.Budget)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Cost)
+                    @Html.DisplayFor(modelItem => item.Course.Extrabudgetary)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PreparatoryCourses)
+                    @Html.DisplayFor(modelItem => item.Course.Cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.PreparatoryCourses)
                 </td>
             </tr>
         }

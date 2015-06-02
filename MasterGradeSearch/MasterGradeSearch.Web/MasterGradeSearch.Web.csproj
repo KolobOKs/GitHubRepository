@@ -238,6 +238,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchBinder.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

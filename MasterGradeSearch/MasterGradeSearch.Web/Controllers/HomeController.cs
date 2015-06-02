@@ -10,7 +10,7 @@ namespace MasterGradeSearch.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectPermanent("./Search");
         }
 
         public ActionResult About()
