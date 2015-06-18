@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Тип "Дисциплина направления подготовки" (например "Экономика"). Соотносится с таблицей Disciplines в базе данных
+    /// </summary>
     [DisplayName("Направление подготовки")]
     public class Discipline
     {

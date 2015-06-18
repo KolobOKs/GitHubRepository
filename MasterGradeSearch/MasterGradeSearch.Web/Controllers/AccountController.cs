@@ -12,6 +12,9 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     Система авторизации у тебя не используется
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {

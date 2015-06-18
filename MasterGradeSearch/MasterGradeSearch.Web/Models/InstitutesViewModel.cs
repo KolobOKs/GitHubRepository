@@ -5,6 +5,9 @@ using MasterGradeSearch.Core.Commons;
 
 namespace MasterGradeSearch.Web.Models
 {
+    /// <summary>
+    ///     Модель для представления на веб страницу вузов
+    /// </summary>
     public class InstitutesViewModel
     {
         public ICollection<Institute> AllInstitutes { get; set; }

@@ -12,6 +12,9 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     Районы. Аналогично городам. Смотри CitiesController.cs, только вместо городов районы
+    /// </summary>
     public class DistrictsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

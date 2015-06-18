@@ -13,6 +13,9 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     Вузы. Аналогично городам. Смотри CitiesController.cs, только вместо городов вузы
+    /// </summary>
     public class InstitutesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Критерий. Соотносится с таблицей Criterions в базе данных.
+    /// </summary>
     [DisplayName("Критерий")]
     public class Criterion
     {

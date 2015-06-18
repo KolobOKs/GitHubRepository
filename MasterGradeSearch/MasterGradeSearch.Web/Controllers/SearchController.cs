@@ -12,11 +12,16 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     Контроллер поиска. Контроллер, который заполняет формы фильтров для пользователя. После того, как пользователь
+    ///     заполнил фильтры, обрабатывает их, формирует объект типа CourseFilterProperties - и отправляет его в Calculation.cs
+    ///     Этот контроллер можно назвать "Модулем обработки данных"
+    /// </summary>
     public class SearchController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext(); // Связь с модулем взаимодействия с базой данных
 
-        // GET: Search
+        // Основная страница поиска. Происходит заполнение фильтров информацией из базы данных
         public async Task<ActionResult> Index()
         {
             var cities = await db.Cities.ToListAsync();
@@ -67,11 +72,16 @@ namespace MasterGradeSearch.Web.Controllers
             return View(model);
         }
 
+        // POST запрос, который срабатывает после того, как пользователь нажал кнопку "ИСКАТЬ"
+        // Здесь информация с формы преобразуется в объект типа CourseFilterProperties.cs
+        // Ниже в методе можешь увидеть комментарий, где непосредственно происходит расчет.
+        // Данные из форм со страницы, попадают в параметр SearchViewModel searchView, с помощью
+        // Специального преобразователя SearchBinder (вот тут моя кровь и пролилась). Если тебе нужно - посмотри описание этого класса. Он находится в корне проекта Web
         [HttpPost]
         public async Task<ActionResult> Index([ModelBinder(typeof(SearchBinder))] SearchViewModel searchView)
         {
             var ratios = await db.CriterionRatios.Include(c=>c.CriterionSource).Include(c=>c.CriterionDestination).ToListAsync();
-            var courses = await db.Courses.Include(c=>c.Exams).Include(c=>c.Institute).Include(c=>c.Discipline).ToListAsync();
+            var courses = await db.Courses.Include(c=>c.Exams).Include(c=>c.Institute).Include(c=>c.Discipline).Include(c=>c.Institute.District).ToListAsync();
             var calc = new Calculation(ratios);
 
             var filter = new CourseFilterProreties();
@@ -82,6 +92,7 @@ namespace MasterGradeSearch.Web.Controllers
             filter.PreparatoryCourses = searchView.PreparationCourses;
             filter.Exams = searchView.Exams;
             filter.Cost = searchView.Cost;
+            filter.Hostel = searchView.Hostel;
             filter.LearningTypes=new List<LearningType>();
             if (searchView.FullTime)
             {
@@ -103,7 +114,9 @@ namespace MasterGradeSearch.Web.Controllers
 
             foreach (var course in courses)
             {
-                var doubles=calc.GetCoefOfCourse(filter, course, courses);
+                if(!filter.Disciplines.Any(d=>d.Id==course.Discipline.Id))
+                    continue;
+                var doubles=calc.GetCoefOfCourse(filter, course, courses); // ЗДЕСЬ ПРОИСХОДИТ РАСЧЕТ КОЭФФИЦИЕНТА ПО ДАННЫМ ФИЛЬТРА
                 var searchCourseViewModel = new SearchCourseViewModel();
                 searchCourseViewModel.Course = course;
                 searchCourseViewModel.SearchCoef = doubles;

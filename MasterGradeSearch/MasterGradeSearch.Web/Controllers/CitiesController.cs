@@ -12,17 +12,22 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     Контроллер, ответственный за работу с типом "Город".
+    ///     С помощью него мы можем отображать списком города, которые есть в нашей системе
+    ///     Редактировать, добавлять, удалять существуюшие
+    /// </summary>
     public class CitiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Cities
+        // Отображаем список всех городов
         public async Task<ActionResult> Index()
         {
             return View(await db.Cities.ToListAsync());
         }
 
-        // GET: Cities/Details/5
+        // Информация о конкретном городе
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,15 +42,16 @@ namespace MasterGradeSearch.Web.Controllers
             return View(city);
         }
 
-        // GET: Cities/Create
+        // Создание нового города
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Cities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST запрос создания нового города
+        // Он срабатывает, когда пользователь ввел название города, который он хочет создать
+        // Мы это название получаем в виде ссылки /Cities/Create?Name=Название_города.
+        // Далее город добавляется в базу данных
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name")] City city)
@@ -60,7 +66,7 @@ namespace MasterGradeSearch.Web.Controllers
             return View(city);
         }
 
-        // GET: Cities/Edit/5
+        // Редактирование
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,9 +81,7 @@ namespace MasterGradeSearch.Web.Controllers
             return View(city);
         }
 
-        // POST: Cities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST редактрирование, аналогично POST созданию
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] City city)
@@ -91,7 +95,7 @@ namespace MasterGradeSearch.Web.Controllers
             return View(city);
         }
 
-        // GET: Cities/Delete/5
+        // Удаление
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -106,7 +110,7 @@ namespace MasterGradeSearch.Web.Controllers
             return View(city);
         }
 
-        // POST: Cities/Delete/5
+        // POST: Удаление. Срабатывает когда человек нажимает кнопку "Да, я точно хочу удалить"
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
@@ -116,6 +120,7 @@ namespace MasterGradeSearch.Web.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Район. Соотносится с таблицей Districts в базе данных
+    /// </summary>
     [DisplayName("Район")]
     public class District
     {

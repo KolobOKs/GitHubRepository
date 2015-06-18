@@ -7,7 +7,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MasterGradeSearch.Web.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    /// <summary>
+    ///     СМОТРИ КЛАСС НИЖЕ.
+    ///     конкретно этот тип у тебя не испльзуется
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -20,6 +23,10 @@ namespace MasterGradeSearch.Web.Models
         }
     }
 
+    /// <summary>
+    ///     Класс, обеспечиващий связь с базой данных.
+    ///     Обеспечивает взаимодейтствие с базой данных: получение, создание, изменение и удаление объектов (город, районы, вузы и пр).
+    /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Вступительное испытание. Соотносится с таблицей Exams в базе данных
+    /// </summary>
     public class Exam
     {
         [Key]

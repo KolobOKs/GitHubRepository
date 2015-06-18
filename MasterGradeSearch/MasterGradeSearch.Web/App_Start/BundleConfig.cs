@@ -3,6 +3,10 @@ using System.Web.Optimization;
 
 namespace MasterGradeSearch.Web
 {
+    /// <summary>
+    ///     Не обязательно это тебе расписывать, но если хочешь...
+    ///     Это адреса на javascript и css файлы, ссылки на которые в дальнейшем будут использовать web страницы
+    /// </summary>
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862

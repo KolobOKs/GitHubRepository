@@ -5,6 +5,9 @@ using MasterGradeSearch.Core.Commons;
 
 namespace MasterGradeSearch.Web.Models
 {
+    /// <summary>
+    ///     Модель для представления данных для страницы поиска
+    /// </summary>
     public class SearchViewModel
     {
         public List<City> Cities { get; set; }

@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Отношение критериев. Соотносится с таблицей CriterionRatios в базе данных
+    /// </summary>
     public class CriterionRatio
     {
         public Int32 Id { get; set; }

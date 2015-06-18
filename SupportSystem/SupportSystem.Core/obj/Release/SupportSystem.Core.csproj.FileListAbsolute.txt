@@ -1,0 +1,5 @@
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Core\bin\Release\SupportSystem.Core.dll
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Core\bin\Release\SupportSystem.Core.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Core\obj\Release\SupportSystem.Core.csprojResolveAssemblyReference.cache
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Core\obj\Release\SupportSystem.Core.dll
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Core\obj\Release\SupportSystem.Core.pdb

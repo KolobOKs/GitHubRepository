@@ -1,0 +1,12 @@
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\bin\Debug\SupportSystem.Interface.exe.config
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\bin\Debug\SupportSystem.Interface.exe
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\bin\Debug\SupportSystem.Interface.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\bin\Debug\SupportSystem.Core.dll
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\bin\Debug\SupportSystem.Core.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.csprojResolveAssemblyReference.cache
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.Form1.resources
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.Properties.Resources.resources
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.csproj.GenerateResource.Cache
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.exe
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Interface\obj\Debug\SupportSystem.Interface.AddNewQuestion.resources

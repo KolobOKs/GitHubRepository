@@ -5,7 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasterGradeSearch.Core.Commons
 {
-
+    /// <summary>
+    ///     Тип "Направление подготовки". Соотносится с таблицей Courses в базе данных
+    /// </summary>
     public class Course
     {
         [Key]

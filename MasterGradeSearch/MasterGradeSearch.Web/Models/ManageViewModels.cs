@@ -5,6 +5,9 @@ using Microsoft.Owin.Security;
 
 namespace MasterGradeSearch.Web.Models
 {
+    /// <summary>
+    ///     Эти классы у тебя не используются
+    /// </summary>
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }

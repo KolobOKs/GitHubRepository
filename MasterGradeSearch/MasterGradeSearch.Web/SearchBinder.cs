@@ -8,6 +8,10 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web
 {
+    /// <summary>
+    ///     Класс, обеспечивающий преобразование данных из строки запроса (напр. localhost/Search/Index?City=Москва&Institute=МЭСИ...
+    ///     в объект, с которым может работать SearchController
+    /// </summary>
     public class SearchBinder : IModelBinder
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
@@ -20,7 +24,7 @@ namespace MasterGradeSearch.Web
 
             var hostel = bindingContext.ValueProvider.GetValue("hostelCHECK");
             var preparation = bindingContext.ValueProvider.GetValue("preparationCHECK");
-            var budget = bindingContext.ValueProvider.GetValue("budgetCHECK ");
+            var budget = bindingContext.ValueProvider.GetValue("budgetCHECK");
             var extraBudget = bindingContext.ValueProvider.GetValue("extraBudgetCHECK");
             var full = bindingContext.ValueProvider.GetValue("fullCHECK");
             var distance = bindingContext.ValueProvider.GetValue("distanceCHECK");

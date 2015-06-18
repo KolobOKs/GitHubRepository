@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MasterGradeSearch.Web.Models
 {
+    /// <summary>
+    ///     Эта модель у тебя не используется
+    /// </summary>
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

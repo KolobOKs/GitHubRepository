@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Тип "Город". Соотносится с таблицей Cities в базе данных.
+    /// </summary>
     [DisplayName("Город")]
     public class City
     {

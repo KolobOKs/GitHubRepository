@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasterGradeSearch.Core.Commons
 {
+    /// <summary>
+    ///     Вуз. Соотносится с таблицей Institites в базе данных
+    /// </summary>
     public class Institute
     {
         public int Id { get; set; }

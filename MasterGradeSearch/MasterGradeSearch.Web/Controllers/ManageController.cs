@@ -11,6 +11,9 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     У тебя не используется
+    /// </summary>
     [Authorize]
     public class ManageController : Controller
     {

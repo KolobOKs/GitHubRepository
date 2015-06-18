@@ -1,0 +1,8 @@
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\bin\Debug\SupportSystem.Console.exe.config
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\bin\Debug\SupportSystem.Console.exe
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\bin\Debug\SupportSystem.Console.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\bin\Debug\SupportSystem.Core.dll
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\bin\Debug\SupportSystem.Core.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\obj\Debug\SupportSystem.Console.csprojResolveAssemblyReference.cache
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\obj\Debug\SupportSystem.Console.exe
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.Console\obj\Debug\SupportSystem.Console.pdb

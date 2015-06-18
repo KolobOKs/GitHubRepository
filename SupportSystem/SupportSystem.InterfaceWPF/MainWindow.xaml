@@ -1,0 +1,58 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:Core="clr-namespace:SupportSystem.Core;assembly=SupportSystem.Core" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" x:Class="SupportSystem.InterfaceWPF.MainWindow"
+        Title="MainWindow" Height="435.572" Width="685.199">
+    <Window.Resources>
+        <dx:IEnumerableDataSource x:Key="IEnumerableDataSource">
+            <dx:DesignDataManager.DesignData>
+                <dx:DesignDataSettings DataObjectType="{x:Type Core:ProblemRatio}" RowCount="5"/>
+            </dx:DesignDataManager.DesignData>
+        </dx:IEnumerableDataSource>
+    </Window.Resources>
+    <Grid>
+
+
+        <dx:DXTabControl x:Name="MainTabControl" Margin="0,0,0,0.333" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0">
+            <dx:DXTabItem Header="Tab">
+                <Grid Margin="0,0,0,0" Background="#FF3F3F3F">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="307*"/>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="313*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="Preset1Button" Content="Button" HorizontalAlignment="Left" Margin="1,60,0,0" VerticalAlignment="Top" Width="115" Height="35" Click="Preset1Button_Click"/>
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem x:Name="QuestionsTab" Header="Tab">
+                <Grid Background="#FF3F3F3F">
+                    <Label x:Name="QuestionTextLabel" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="77" Width="659" FontFamily="Times New Roman" FontSize="22" Background="#00000000" Foreground="White">
+                        <TextBlock x:Name="QuestionTextBlock" TextWrapping="WrapWithOverflow">Текс вопроса отображется здесь?</TextBlock>
+                    </Label>
+                    <Button x:Name="YesAnswerButton" Content="Да" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="151" Height="55" RenderTransformOrigin="0.506,0.558" Click="YesAnswerButton_Click"/>
+                    <Button x:Name="NoAnswerButton" Content="Нет" HorizontalAlignment="Left" Margin="182,92,0,0" VerticalAlignment="Top" Width="151" Height="55" RenderTransformOrigin="0.506,0.558" Click="NoAnswerButton_Click"/>
+                    <Button x:Name="SkipAnswerButton" Content="Пропустить" HorizontalAlignment="Left" Margin="366,92,0,0" VerticalAlignment="Top" Width="151" Height="55" RenderTransformOrigin="0.506,0.558" Click="SkipAnswerButton_Click"/>
+                    <dxg:GridControl x:Name="ProblemsRatingGrid" AutoGenerateColumns="AddNew" HorizontalAlignment="Left" Margin="1,196,0,0" VerticalAlignment="Top" Height="185" Width="677" ShowBorder="False" EnableSmartColumnsGeneration="True" IsFilterEnabled="False" ItemsSource="{Binding Data, Source={StaticResource IEnumerableDataSource}}">
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="Problem" IsSmart="True" DisplayMemberBinding="{Binding Problem.ShortName}" Width="600"/>
+                            <dxg:GridColumn FieldName="Ratio" IsSmart="True" Width="59"/>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView AllowPerPixelScrolling="True" ShowColumnHeaders="False" ShowGroupPanel="False" AutoWidth="True" >
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Tab">
+                <Grid Background="#FF3F3F3F">
+                    <Label x:Name="ProblemShortNameLabel" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="94" Width="669">
+                        <TextBlock x:Name="ProblemTextBlock" TextWrapping="WrapWithOverflow"></TextBlock>
+                    </Label>
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+    </Grid>
+</Window>

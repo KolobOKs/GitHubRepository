@@ -1,0 +1,11 @@
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\bin\Debug\SupportSystem.AdminInterface.exe.config
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\bin\Debug\SupportSystem.AdminInterface.exe
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\bin\Debug\SupportSystem.AdminInterface.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\bin\Debug\SupportSystem.Core.dll
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\bin\Debug\SupportSystem.Core.pdb
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\obj\Debug\SupportSystem.AdminInterface.csprojResolveAssemblyReference.cache
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\obj\Debug\SupportSystem.AdminInterface.Form1.resources
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\obj\Debug\SupportSystem.AdminInterface.Properties.Resources.resources
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\obj\Debug\SupportSystem.AdminInterface.csproj.GenerateResource.Cache
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\obj\Debug\SupportSystem.AdminInterface.exe
+C:\Git\GitHubRepository\SupportSystem\SupportSystem.AdminInterface\obj\Debug\SupportSystem.AdminInterface.pdb

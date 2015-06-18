@@ -9,6 +9,9 @@ using MasterGradeSearch.Web.Models;
 
 namespace MasterGradeSearch.Web.Controllers
 {
+    /// <summary>
+    ///     Вступительные испытания. Аналогично городам. Смотри CitiesController.cs, только вместо городов Вступительные испытания.
+    /// </summary>
     public class ExamsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
