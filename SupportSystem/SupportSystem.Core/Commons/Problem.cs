@@ -8,7 +8,7 @@ namespace SupportSystem.Core.Commons
     {
         public String ShortName { get; set; }
         public String Solve { get; set; }
-        public Int32 DetectedCount { get; set; }
+        public Double DetectedCount { get; set; }
 
         [Association("Problem-ProblemQuestionRelationship")]
         public XPCollection<ProblemQuestionRelationship> Relationships { get

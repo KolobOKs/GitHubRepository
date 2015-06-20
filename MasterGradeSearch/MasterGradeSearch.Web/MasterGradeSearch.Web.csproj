@@ -229,6 +229,14 @@
     <Compile Include="Migrations\201505302019251_CriteriesAdded.Designer.cs">
       <DependentUpon>201505302019251_CriteriesAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506181624358_Institute_Description_Images_Add.cs" />
+    <Compile Include="Migrations\201506181624358_Institute_Description_Images_Add.Designer.cs">
+      <DependentUpon>201506181624358_Institute_Description_Images_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506181638255_BugFixBlob.cs" />
+    <Compile Include="Migrations\201506181638255_BugFixBlob.Designer.cs">
+      <DependentUpon>201506181638255_BugFixBlob.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CourseViewModel.cs" />
@@ -380,6 +388,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505302019251_CriteriesAdded.resx">
       <DependentUpon>201505302019251_CriteriesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506181624358_Institute_Description_Images_Add.resx">
+      <DependentUpon>201506181624358_Institute_Description_Images_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506181638255_BugFixBlob.resx">
+      <DependentUpon>201506181638255_BugFixBlob.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

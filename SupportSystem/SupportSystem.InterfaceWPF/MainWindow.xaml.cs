@@ -1,37 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SupportSystem.Core;
 using SupportSystem.Core.Commons;
 
 namespace SupportSystem.InterfaceWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            ProblemDetector.Initialize(DataBaseContext.Problems,DataBaseContext.Questions);
-            ProblemDetector.QuestionFound+= ProblemDetectorOnQuestionFound;
-            ProblemDetector.RatiosChanged+= ProblemDetectorOnRatiosChanged;
-            ProblemDetector.ProblemFound+= ProblemDetectorOnProblemFound;
-            ProblemsRatingGrid.ItemsSource = ProblemDetector.ProblemRatios;
-            ProblemsRatingGrid.RefreshData();
+            ProblemDetector.Initialize(DataBaseContext.Problems, DataBaseContext.Questions);
+            ProblemDetector.QuestionFound += ProblemDetectorOnQuestionFound;
+            ProblemDetector.RatiosChanged += ProblemDetectorOnRatiosChanged;
+            ProblemDetector.ProblemFound += ProblemDetectorOnProblemFound;
+            ProblemDetector.NextStateTransfer+= ProblemDetectorOnNextStateTransfer;
+            foreach (ProblemRatio problemRatio in ProblemDetector.ProblemRatios)
+            {
+                ProblemsListBox.Items.Add(problemRatio);
+            }
+        }
+
+        private void ProblemDetectorOnNextStateTransfer(object sender, EventArgs eventArgs)
+        {
+            MainTabControl.SelectedIndex = 4;
         }
 
         private void ProblemDetectorOnProblemFound(object sender, ProblemFoundEventArgs problemFoundEventArgs)
@@ -42,7 +37,11 @@ namespace SupportSystem.InterfaceWPF
 
         private void ProblemDetectorOnRatiosChanged(object sender, EventArgs eventArgs)
         {
-            ProblemsRatingGrid.RefreshData();
+            ProblemsListBox.Items.Clear();
+            foreach (ProblemRatio problemRatio in ProblemDetector.ProblemRatios)
+            {
+                ProblemsListBox.Items.Add(problemRatio);
+            }
         }
 
         private void ProblemDetectorOnQuestionFound(object sender, QuestionFoundEventArgs questionFoundEventArgs)
@@ -69,6 +68,17 @@ namespace SupportSystem.InterfaceWPF
         private void SkipAnswerButton_Click(object sender, RoutedEventArgs e)
         {
             ProblemDetector.AnswerCalculation(null);
+        }
+
+        private void ProblemSolvedButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProblemDetector.ConfirmedAssumption();
+            MainTabControl.SelectedIndex = 3;
+        }
+
+        private void WrongProblemButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProblemDetector.WrongProblem();
         }
     }
 }

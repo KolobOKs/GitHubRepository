@@ -7,26 +7,27 @@ namespace SupportSystem.Core
 {
     public static class PresetFacade
     {
-        public static List<Preset> Presets { get; set; }
-
         static PresetFacade()
         {
-            Presets=new List<Preset>();
+            Presets = new List<Preset>();
             var presetTest = new Preset();
-            int[] preset1Positive = new int[]{5010};
-            int[] preset1Negative = new int[] {};
-            var positiveQuestions=DataBaseContext.Questions.Where(s => preset1Positive.Contains(s.Oid));
-            var negativeQuestions = DataBaseContext.Questions.Where(s => preset1Negative.Contains(s.Oid));
-            foreach (var positiveQuestion in positiveQuestions)
+            int[] preset1Positive = {5010};
+            int[] preset1Negative = {};
+            IEnumerable<Question> positiveQuestions =
+                DataBaseContext.Questions.Where(s => preset1Positive.Contains(s.Oid));
+            IEnumerable<Question> negativeQuestions =
+                DataBaseContext.Questions.Where(s => preset1Negative.Contains(s.Oid));
+            foreach (Question positiveQuestion in positiveQuestions)
             {
-                presetTest.PresetQuestions.Add(new Tuple<Question, bool>(positiveQuestion,true));
+                presetTest.PresetQuestions.Add(new Tuple<Question, bool>(positiveQuestion, true));
             }
-            foreach (var negativeQuestion in negativeQuestions)
+            foreach (Question negativeQuestion in negativeQuestions)
             {
-                presetTest.PresetQuestions.Add(new Tuple<Question, bool>(negativeQuestion,false));
+                presetTest.PresetQuestions.Add(new Tuple<Question, bool>(negativeQuestion, false));
             }
             Presets.Add(presetTest);
         }
- 
+
+        public static List<Preset> Presets { get; set; }
     }
 }

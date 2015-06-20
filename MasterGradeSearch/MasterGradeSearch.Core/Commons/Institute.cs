@@ -34,7 +34,11 @@ namespace MasterGradeSearch.Core.Commons
 
         public int DistrictId { get; set; }
 
+        [MaxLength]
+        public String Description { get; set; }
 
+        [MaxLength]
+        public String ImageBase64 { get; set; }
         
         [ForeignKey("DistrictId")]
         public District District { get; set; }

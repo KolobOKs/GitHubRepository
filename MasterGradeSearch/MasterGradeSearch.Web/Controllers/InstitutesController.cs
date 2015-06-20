@@ -63,7 +63,7 @@ namespace MasterGradeSearch.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,ShortName,FullName,CityId,DistrictId")] Institute institute)
+        public async Task<ActionResult> Create([Bind(Include = "Id,ShortName,FullName,CityId,DistrictId,Description,ImageBase64")] Institute institute)
         {
             if (ModelState.IsValid)
             {

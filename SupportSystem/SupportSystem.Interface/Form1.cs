@@ -68,7 +68,7 @@ namespace SupportSystem.Interface
 
         private void unsolvedButton_Click(object sender, EventArgs e)
         {
-            ProblemDetector.MistakenBelief(ProblemDetector.ProblemRatios[0]);
+            ProblemDetector.WrongProblem(ProblemDetector.ProblemRatios[0]);
             _currentQuestion = ProblemDetector.GetNextQuestion();
             questionTextLabel.Text = _currentQuestion.QuestionText;
         }
